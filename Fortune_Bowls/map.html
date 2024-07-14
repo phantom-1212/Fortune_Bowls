@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Pinning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var locations = [
+                { name: "Vidhana Soudha", lat: 12.9985, lng: 77.5926, food: "Available" },
+                { name: "Lalbagh Botanical Garden", lat: 12.9507, lng: 77.5951, food: "Not Available" },
+                { name: "ISKCON Temple Bangalore", lat: 13.0104, lng: 77.5518, food: "Available" },
+                { name: "Bannerghatta National Park", lat: 12.9403, lng: 77.5671, food: "Available" },
+                { name: "Bangalore Palace", lat: 12.9629, lng: 77.5760, food: "Not Available" },
+                { name: "Wonderla Amusement Park", lat: 12.8000, lng: 77.5770, food: "Available" }
+            ];
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: { lat: 12.971599, lng: 77.594566 }
+            });
+
+            var currentInfoWindow = null; // Track the currently open info window
+
+            locations.forEach(function (location) {
+                var marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map
+                });
+
+                var contentString = '<div>' +
+                    '<h3>' + location.name + '</h3>' +
+                    '<p>Availability of Food: ' + location.food + '</p>' +
+                    '<button onclick="selectDonationCounter()">Select Donation Counter</button>' +
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                marker.addListener('click', function () {
+                    // Close the current info window before opening a new one
+                    if (currentInfoWindow) {
+                        currentInfoWindow.close();
+                    }
+                    infowindow.open(map, marker);
+                    currentInfoWindow = infowindow; // Update the current info window
+                });
+            });
+        }
+
+        function selectDonationCounter() {
+        window.location.href = "receiving.html";
+            alert("Donation Counter Selected!");
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjkXMMb9gILhS6wKJVneo74ZjvNoC1WA&callback=initMap"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffdd87; /* Background gradient color */
+    background-image: radial-gradient(circle at top right, #ff7f50, #ffd700); /* Orange and yellow spray */
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* 80% transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #007bff; /* Blue heading color */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Dark text color */
+}
+
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.half-width {
+    display: inline-block;
+    width: calc(50% - 10px); /* Half width with margin */
+}
+
+.full-width {
+    width: 100%; /* Full width */
+}
+
+.buttons {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.receive-button,
+.back-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #28a745; /* Green button color */
+    transition: background-color 0.3s ease;
+}
+
+.receive-button:hover,
+.back-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.home-button:hover {
+    background-color: darkgreen; /* Change color on hover if desired */
+}
+

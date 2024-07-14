@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability of Donated Food</title>
+    <link rel="stylesheet" href="css/received.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Availability of Donated Food</h1>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Donator Name</th>
+                        <th>Type of Food</th>
+                        <th>Distance (km)</th>
+                        <th>Checkbox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Packed Food</td>
+                        <td>5</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Vegetables</td>
+                        <td>3</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Michael Johnson</td>
+                        <td>Homemade Food</td>
+                        <td>7</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Sarah Lee</td>
+                        <td>Homemade Food</td>
+                        <td>10</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <!-- Additional rows -->
+                    <tr>
+                        <td>David Smith</td>
+                        <td>Canned Food</td>
+                        <td>8</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Mary Adams</td>
+                        <td>Bakery Items</td>
+                        <td>12</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Kevin Miller</td>
+                        <td>Cooked Meals</td>
+                        <td>9</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="buttons">
+            <button class="receive-button" onclick="goReceive()">Receive</button>
+            <button class="home-button" onclick="goHome()">Home</button>
+        </div>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = "mainlg.html";
+        }
+        function goReceive() {
+            window.location.href = "receiving.html";
+
+        }
+    </script>
+</body>
+
+</html>
