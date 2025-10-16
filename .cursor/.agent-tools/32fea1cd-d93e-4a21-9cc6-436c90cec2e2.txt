@@ -1,0 +1,130 @@
+Collecting fastapi==0.115.0
+  Using cached fastapi-0.115.0-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6)
+  Using cached uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+Collecting httpx==0.27.2
+  Using cached httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting python-multipart==0.0.17
+  Using cached python_multipart-0.0.17-py3-none-any.whl.metadata (1.8 kB)
+Collecting numpy==2.1.2
+  Downloading numpy-2.1.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting pdfplumber==0.11.4
+  Downloading pdfplumber-0.11.4-py3-none-any.whl.metadata (41 kB)
+Collecting starlette<0.39.0,>=0.37.2 (from fastapi==0.115.0)
+  Downloading starlette-0.38.6-py3-none-any.whl.metadata (6.0 kB)
+Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi==0.115.0)
+  Downloading pydantic-2.12.2-py3-none-any.whl.metadata (85 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi==0.115.0)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting click>=7.0 (from uvicorn==0.30.6->uvicorn[standard]==0.30.6)
+  Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.30.6->uvicorn[standard]==0.30.6)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting anyio (from httpx==0.27.2)
+  Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting certifi (from httpx==0.27.2)
+  Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx==0.27.2)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx==0.27.2)
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting sniffio (from httpx==0.27.2)
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting pdfminer.six==20231228 (from pdfplumber==0.11.4)
+  Downloading pdfminer.six-20231228-py3-none-any.whl.metadata (4.2 kB)
+Collecting Pillow>=9.1 (from pdfplumber==0.11.4)
+  Downloading pillow-12.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting pypdfium2>=4.18.0 (from pdfplumber==0.11.4)
+  Downloading pypdfium2-4.30.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (48 kB)
+Collecting httptools>=0.5.0 (from uvicorn[standard]==0.30.6)
+  Downloading httptools-0.7.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting python-dotenv>=0.13 (from uvicorn[standard]==0.30.6)
+  Downloading python_dotenv-1.1.1-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: pyyaml>=5.1 in /usr/lib/python3/dist-packages (from uvicorn[standard]==0.30.6) (6.0.2)
+Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]==0.30.6)
+  Downloading uvloop-0.21.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.13 (from uvicorn[standard]==0.30.6)
+  Downloading watchfiles-1.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]==0.30.6)
+  Downloading websockets-15.0.1-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting charset-normalizer>=2.0.0 (from pdfminer.six==20231228->pdfplumber==0.11.4)
+  Downloading charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting cryptography>=36.0.0 (from pdfminer.six==20231228->pdfplumber==0.11.4)
+  Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.0)
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.4 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.0)
+  Downloading pydantic_core-2.41.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.0)
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting cffi>=2.0.0 (from cryptography>=36.0.0->pdfminer.six==20231228->pdfplumber==0.11.4)
+  Downloading cffi-2.0.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=36.0.0->pdfminer.six==20231228->pdfplumber==0.11.4)
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading fastapi-0.115.0-py3-none-any.whl (94 kB)
+Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+Downloading python_multipart-0.0.17-py3-none-any.whl (24 kB)
+Downloading numpy-2.1.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.0/16.0 MB 105.4 MB/s eta 0:00:00
+
+Downloading pdfplumber-0.11.4-py3-none-any.whl (59 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading pdfminer.six-20231228-py3-none-any.whl (5.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 156.5 MB/s eta 0:00:00
+
+Downloading click-8.3.0-py3-none-any.whl (107 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httptools-0.7.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (478 kB)
+Downloading pillow-12.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 117.6 MB/s eta 0:00:00
+
+Downloading pydantic-2.12.2-py3-none-any.whl (460 kB)
+Downloading pydantic_core-2.41.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 141.7 MB/s eta 0:00:00
+
+Downloading pypdfium2-4.30.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 90.1 MB/s eta 0:00:00
+
+Downloading python_dotenv-1.1.1-py3-none-any.whl (20 kB)
+Downloading starlette-0.38.6-py3-none-any.whl (71 kB)
+Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading uvloop-0.21.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 105.1 MB/s eta 0:00:00
+
+Downloading watchfiles-1.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+Downloading websockets-15.0.1-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 106.1 MB/s eta 0:00:00
+
+Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Downloading cffi-2.0.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Installing collected packages: websockets, uvloop, typing-extensions, sniffio, python-multipart, python-dotenv, pypdfium2, pycparser, Pillow, numpy, idna, httptools, h11, click, charset-normalizer, certifi, annotated-types, uvicorn, typing-inspection, pydantic-core, httpcore, cffi, anyio, watchfiles, starlette, pydantic, httpx, cryptography, pdfminer.six, fastapi, pdfplumber
+  WARNING: The script websockets is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script dotenv is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script pypdfium2 is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts f2py and numpy-config are installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script normalizer is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script uvicorn is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script watchfiles is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script httpx is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script fastapi is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script pdfplumber is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed Pillow-12.0.0 annotated-types-0.7.0 anyio-4.11.0 certifi-2025.10.5 cffi-2.0.0 charset-normalizer-3.4.4 click-8.3.0 cryptography-46.0.3 fastapi-0.115.0 h11-0.16.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.27.2 idna-3.11 numpy-2.1.2 pdfminer.six-20231228 pdfplumber-0.11.4 pycparser-2.23 pydantic-2.12.2 pydantic-core-2.41.4 pypdfium2-4.30.0 python-dotenv-1.1.1 python-multipart-0.0.17 sniffio-1.3.1 starlette-0.38.6 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.30.6 uvloop-0.21.0 watchfiles-1.1.1 websockets-15.0.1

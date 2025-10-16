@@ -1,0 +1,1 @@
+Python is a high-level, interpreted programming language known for its readability and versatility. It is widely used in web development, data science, automation, and AI. FastAPI is a modern, high-performance web framework for building APIs with Python, leveraging type hints and async I/O for speed and developer productivity.
