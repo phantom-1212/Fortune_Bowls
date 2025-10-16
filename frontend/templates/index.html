@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Knowledge-base Search Engine</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Knowledge-base Search Engine</h1>
+
+    <section class="upload">
+      <h2>Upload Documents (.pdf, .txt, .md)</h2>
+      <input type="file" id="files" multiple accept=".pdf,.txt,.md" />
+      <button id="uploadBtn">Upload & Ingest</button>
+      <pre id="uploadResult"></pre>
+    </section>
+
+    <section class="query">
+      <h2>Ask a Question</h2>
+      <input type="text" id="question" placeholder="Your question..." />
+      <input type="number" id="topk" min="1" max="20" value="5" />
+      <button id="askBtn">Ask</button>
+      <h3>Answer</h3>
+      <div id="answer"></div>
+      <h3>Sources</h3>
+      <ul id="sources"></ul>
+    </section>
+  </div>
+
+  <script>
+    async function uploadFiles() {
+      const input = document.getElementById('files');
+      const form = new FormData();
+      for (const f of input.files) form.append('files', f);
+      const res = await fetch('/api/ingest', { method: 'POST', body: form });
+      const data = await res.json();
+      document.getElementById('uploadResult').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function askQuestion() {
+      const q = document.getElementById('question').value;
+      const topk = parseInt(document.getElementById('topk').value || '5', 10);
+      const res = await fetch('/api/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: q, top_k: topk }),
+      });
+      const data = await res.json();
+      document.getElementById('answer').textContent = data.answer || '';
+      const ul = document.getElementById('sources');
+      ul.innerHTML = '';
+      for (const s of data.sources || []) {
+        const li = document.createElement('li');
+        li.textContent = `${s.source_name} (score=${s.score.toFixed(3)}, chunk=${s.chunk_index})`;
+        ul.appendChild(li);
+      }
+    }
+
+    document.getElementById('uploadBtn').addEventListener('click', uploadFiles);
+    document.getElementById('askBtn').addEventListener('click', askQuestion);
+  </script>
+</body>
+</html>
