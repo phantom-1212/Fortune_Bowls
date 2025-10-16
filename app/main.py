@@ -19,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize global components
+# Initialize global components lazily heavy bits inside
 vector_store = VectorStore(settings.index_dir, settings.embedding_model)
 llm = LLMProvider()
 

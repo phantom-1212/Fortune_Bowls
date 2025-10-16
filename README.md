@@ -68,6 +68,20 @@ curl -sS -X POST http://localhost:8000/query \
 - Local `transformers` fallback uses `google/flan-t5-base` and will download model weights on first run. For best quality, use OpenAI.
 - Index and metadata persist under `data/index/`. Uploads saved in `data/uploads/`.
 
+## Docker
+
+Build and run with Docker:
+
+```bash
+docker build -t rag-kb .
+docker run --rm -it -p 8000:8000 \
+  -e OPENAI_API_KEY=$OPENAI_API_KEY \
+  -v $(pwd)/data:/app/data \
+  rag-kb
+```
+
+Then open `http://localhost:8000/`.
+
 ## Demo video
 
 Record a short screencast showing:

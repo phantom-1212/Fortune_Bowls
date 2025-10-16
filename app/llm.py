@@ -23,28 +23,30 @@ def _build_context(snippets: List[Tuple[str, str]]) -> str:
 
 
 class LLMProvider:
+    """Lazily initialize LLM backend. Defaults to transformers if no OpenAI key."""
+
     def __init__(self) -> None:
-        self.provider = settings.llm_provider.lower().strip()
+        prov = settings.llm_provider.lower().strip()
+        if prov == "openai" and not os.getenv("OPENAI_API_KEY"):
+            prov = "transformers"
+        self.provider = prov
+
         self._client = None
         self._pipeline = None
 
-        if self.provider == "openai":
-            try:
-                from openai import OpenAI  # type: ignore
-                self._client = OpenAI()
-            except Exception as e:
-                raise RuntimeError("Failed to initialize OpenAI client. Set OPENAI_API_KEY.") from e
-        else:
-            # transformers fallback
-            try:
-                from transformers import pipeline  # type: ignore
-                self._pipeline = pipeline(
-                    "text2text-generation", model=settings.transformer_model
-                )
-            except Exception as e:
-                raise RuntimeError(
-                    "Failed to initialize transformers pipeline. Install transformers/torch or use OpenAI."
-                ) from e
+        # Do not initialize heavy clients at import; defer to first generate
+
+    def _ensure_backend(self) -> None:
+        if self.provider == "openai" and self._client is None:
+            from openai import OpenAI  # type: ignore
+
+            self._client = OpenAI()
+        elif self.provider != "openai" and self._pipeline is None:
+            from transformers import pipeline  # type: ignore
+
+            self._pipeline = pipeline(
+                "text2text-generation", model=settings.transformer_model
+            )
 
     def generate(self, question: str, results: List[SearchResult]) -> str:
         # Prepare labeled snippets up to max_context_chars
@@ -69,6 +71,7 @@ class LLMProvider:
             f"Question: {question}\n\nContext:\n{context_block}"
         )
 
+        self._ensure_backend()
         if self.provider == "openai":
             resp = self._client.chat.completions.create(
                 model=settings.openai_model,

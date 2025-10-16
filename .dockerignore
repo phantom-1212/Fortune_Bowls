@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env*
+.git
+.gitignore
+node_modules/
+.dist/
+/build/
+.DS_Store
+*.egg-info/
+.cache/

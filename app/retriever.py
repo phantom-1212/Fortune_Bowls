@@ -2,12 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 import json
 
 import faiss  # type: ignore
 import numpy as np
-from sentence_transformers import SentenceTransformer
 
 from .config import settings
 from .ingestion import DocumentChunk
@@ -20,19 +19,33 @@ class SearchResult:
 
 
 class EmbeddingModel:
+    """Lazily loads the sentence-transformers model on first use."""
+
     def __init__(self, model_name: str) -> None:
-        self.model = SentenceTransformer(model_name)
-        try:
-            self.dimension = self.model.get_sentence_embedding_dimension()  # type: ignore[attr-defined]
-        except Exception:
-            # Fallback: compute once
-            self.dimension = int(self.embed_texts([""]).shape[1])
+        self.model_name = model_name
+        self._model = None  # deferred load
+        self.dimension: Optional[int] = None
+
+    def _ensure_model(self) -> None:
+        if self._model is None:
+            from sentence_transformers import SentenceTransformer  # lazy import
+
+            self._model = SentenceTransformer(self.model_name)
+            try:
+                self.dimension = self._model.get_sentence_embedding_dimension()  # type: ignore[attr-defined]
+            except Exception:
+                # Will be set from first embedding shape
+                self.dimension = None
 
     def embed_texts(self, texts: List[str]) -> np.ndarray:
-        embeddings = self.model.encode(texts, show_progress_bar=False, normalize_embeddings=False)
+        self._ensure_model()
+        embeddings = self._model.encode(texts, show_progress_bar=False, normalize_embeddings=False)  # type: ignore[union-attr]
         if isinstance(embeddings, list):
             embeddings = np.array(embeddings)
-        return embeddings.astype("float32")
+        embeddings = embeddings.astype("float32")
+        if self.dimension is None:
+            self.dimension = int(embeddings.shape[1])
+        return embeddings
 
     def embed_text(self, text: str) -> np.ndarray:
         return self.embed_texts([text])
@@ -45,8 +58,12 @@ class VectorStore:
         self.index_path = self.index_dir / "embeddings.faiss"
         self.meta_path = self.index_dir / "meta.jsonl"
 
-        self.embedding_model = EmbeddingModel(embedding_model_name)
+        # Lazily create embedding model to avoid heavy init at import time
+        self._embedding_model_name = embedding_model_name
+        self._embedding_model: Optional[EmbeddingModel] = None
+
         self.index = None  # type: ignore
+        self._dim: Optional[int] = None
         self.metadata: List[Dict] = []
 
         self._load_if_exists()
@@ -56,20 +73,26 @@ class VectorStore:
         norms = np.linalg.norm(vectors, ord=2, axis=1, keepdims=True) + 1e-12
         return vectors / norms
 
-    def _create_index(self) -> None:
-        self.index = faiss.IndexFlatIP(self.embedding_model.dimension)
+    def _create_index(self, dim: int) -> None:
+        self.index = faiss.IndexFlatIP(dim)
+        self._dim = dim
 
     def _load_if_exists(self) -> None:
         if self.index_path.exists() and self.meta_path.exists():
             self.index = faiss.read_index(str(self.index_path))
+            self._dim = int(self.index.d)  # type: ignore[union-attr]
             with self.meta_path.open("r", encoding="utf-8") as f:
                 self.metadata = [json.loads(line) for line in f]
         else:
-            self._create_index()
+            # Defer index creation until first add
+            self.index = None
+            self._dim = None
             self.metadata = []
 
     def _save(self) -> None:
         if not settings.persist_index:
+            return
+        if self.index is None:
             return
         faiss.write_index(self.index, str(self.index_path))  # type: ignore[arg-type]
         with self.meta_path.open("w", encoding="utf-8") as f:
@@ -80,8 +103,14 @@ class VectorStore:
         if not chunks:
             return 0, 0
         texts = [c.text for c in chunks]
-        vectors = self.embedding_model.embed_texts(texts)
+        # Lazily initialize embeddings
+        if self._embedding_model is None:
+            self._embedding_model = EmbeddingModel(self._embedding_model_name)
+        vectors = self._embedding_model.embed_texts(texts)
         vectors = self._l2_normalize(vectors)
+        # Lazily create index based on vector dimension
+        if self.index is None:
+            self._create_index(dim=int(vectors.shape[1]))
         self.index.add(vectors)  # type: ignore[union-attr]
         # Persist metadata aligned with new vectors
         for c in chunks:
@@ -94,9 +123,12 @@ class VectorStore:
         return len(texts), vectors.shape[1]
 
     def search(self, query: str, top_k: int) -> List[SearchResult]:
+        # If no index or no data, avoid embedding the query and just return empty
         if self.index is None or len(self.metadata) == 0:
             return []
-        q = self.embedding_model.embed_text(query)
+        if self._embedding_model is None:
+            self._embedding_model = EmbeddingModel(self._embedding_model_name)
+        q = self._embedding_model.embed_text(query)
         q = self._l2_normalize(q)
         distances, indices = self.index.search(q, min(top_k, len(self.metadata)))  # type: ignore[union-attr]
         results: List[SearchResult] = []

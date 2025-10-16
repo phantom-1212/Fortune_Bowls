@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Environments
+.venv/
+.env
+.env.local
+
+# Data & models
+/data/
+!/data/.gitkeep
+
+# Caches
+*.cache/
+.cache/
+
+# VSCode, PyCharm
+.vscode/
+.idea/
+
+# Dist
+build/
+dist/
+*.egg-info/
+
+# Node (in case)
+node_modules/
