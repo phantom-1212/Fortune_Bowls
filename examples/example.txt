@@ -1,0 +1,8 @@
+This is an example text document for the Knowledge-base Search Engine demo.
+It explains that the system uses a RAG pipeline:
+- Ingestion of documents (PDF, TXT, MD)
+- Chunking for better retrieval granularity
+- Embedding using BAAI/bge-small-en-v1.5
+- FAISS vector search with inner product similarity
+- LLM synthesis with OpenAI to answer queries succinctly
+The evaluation focuses on retrieval accuracy, synthesis quality, code structure, and LLM integration.
