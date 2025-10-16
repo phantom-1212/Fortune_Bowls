@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAG Search Demo</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; max-width: 900px; margin: 40px auto; padding: 0 16px; }
+      header { display:flex; align-items:center; justify-content: space-between; }
+      h1 { font-size: 1.5rem; }
+      section { margin: 24px 0; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px; }
+      label { display:block; font-weight: 600; margin-bottom: 8px; }
+      input[type="file"] { display:block; margin-top: 8px; }
+      button { padding: 8px 14px; border: none; background: #111827; color: white; border-radius: 6px; cursor: pointer; }
+      button:disabled { background: #9ca3af; cursor: not-allowed; }
+      pre { background: #f3f4f6; padding: 12px; border-radius: 6px; overflow: auto; }
+      .row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+      .muted { color: #6b7280; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Knowledge-base Search (RAG)</h1>
+      <a class="muted" href="/health" target="_blank">/health</a>
+    </header>
+
+    <section>
+      <h2>1) Ingest Documents</h2>
+      <form id="ingest-form">
+        <label>Upload .txt / .md / .pdf files</label>
+        <input id="files" type="file" multiple />
+        <div style="margin-top:12px"><button id="ingest-btn" type="submit">Ingest</button></div>
+      </form>
+      <div id="ingest-out" class="muted" style="margin-top: 8px"></div>
+    </section>
+
+    <section>
+      <h2>2) Ask a question</h2>
+      <div class="row">
+        <input id="query" type="text" placeholder="Ask something about your documents..." />
+        <button id="ask-btn">Ask</button>
+      </div>
+      <div id="answer" style="margin-top: 12px"></div>
+    </section>
+
+    <script>
+      const apiBase = location.origin;
+
+      document.getElementById('ingest-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const files = document.getElementById('files').files;
+        if (!files.length) { alert('Select files first'); return; }
+        const fd = new FormData();
+        for (const f of files) fd.append('files', f);
+        const btn = document.getElementById('ingest-btn');
+        btn.disabled = true; btn.textContent = 'Ingesting...';
+        try {
+          const res = await fetch(apiBase + '/ingest', { method: 'POST', body: fd });
+          const data = await res.json();
+          document.getElementById('ingest-out').textContent = JSON.stringify(data, null, 2);
+        } catch (e) { alert('Failed: ' + e); }
+        finally { btn.disabled = false; btn.textContent = 'Ingest'; }
+      });
+
+      document.getElementById('ask-btn').addEventListener('click', async () => {
+        const q = document.getElementById('query').value.trim();
+        if (!q) { alert('Enter a question'); return; }
+        const btn = document.getElementById('ask-btn');
+        btn.disabled = true; btn.textContent = 'Asking...';
+        try {
+          const res = await fetch(apiBase + '/query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: q })});
+          const data = await res.json();
+          document.getElementById('answer').innerHTML = `<h3>Answer</h3><pre>${data.answer || ''}</pre><div class="muted">Sources: ${data.sources?.join(', ') || '-'}</div>`;
+        } catch (e) { alert('Failed: ' + e); }
+        finally { btn.disabled = false; btn.textContent = 'Ask'; }
+      });
+    </script>
+  </body>
+</html>
