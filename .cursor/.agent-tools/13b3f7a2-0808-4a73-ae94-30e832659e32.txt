@@ -1,0 +1,130 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting fastapi==0.115.0 (from -r /workspace/requirements.txt (line 1))
+  Using cached fastapi-0.115.0-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Using cached uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic==2.9.2 (from -r /workspace/requirements.txt (line 3))
+  Using cached pydantic-2.9.2-py3-none-any.whl.metadata (149 kB)
+Collecting numpy==2.1.2 (from -r /workspace/requirements.txt (line 4))
+  Using cached numpy-2.1.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting faiss-cpu>=1.9.0.post1 (from -r /workspace/requirements.txt (line 5))
+  Downloading faiss_cpu-1.12.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+Collecting openai==1.51.0 (from -r /workspace/requirements.txt (line 6))
+  Downloading openai-1.51.0-py3-none-any.whl.metadata (24 kB)
+Collecting pypdf==4.3.1 (from -r /workspace/requirements.txt (line 7))
+  Downloading pypdf-4.3.1-py3-none-any.whl.metadata (7.4 kB)
+Collecting python-multipart==0.0.12 (from -r /workspace/requirements.txt (line 8))
+  Downloading python_multipart-0.0.12-py3-none-any.whl.metadata (1.9 kB)
+Collecting requests==2.32.3 (from -r /workspace/requirements.txt (line 9))
+  Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting starlette<0.39.0,>=0.37.2 (from fastapi==0.115.0->-r /workspace/requirements.txt (line 1))
+  Downloading starlette-0.38.6-py3-none-any.whl.metadata (6.0 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi==0.115.0->-r /workspace/requirements.txt (line 1))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting click>=7.0 (from uvicorn==0.30.6->uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.30.6->uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic==2.9.2->-r /workspace/requirements.txt (line 3))
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.23.4 (from pydantic==2.9.2->-r /workspace/requirements.txt (line 3))
+  Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting anyio<5,>=3.5.0 (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting distro<2,>=1.7.0 (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting httpx<1,>=0.23.0 (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.4.0 (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading jiter-0.11.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting tqdm>4 (from openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting charset-normalizer<4,>=2 (from requests==2.32.3->-r /workspace/requirements.txt (line 9))
+  Downloading charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests==2.32.3->-r /workspace/requirements.txt (line 9))
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->-r /workspace/requirements.txt (line 9))
+  Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests==2.32.3->-r /workspace/requirements.txt (line 9))
+  Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting httptools>=0.5.0 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading httptools-0.7.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting python-dotenv>=0.13 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading python_dotenv-1.1.1-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: pyyaml>=5.1 in /usr/lib/python3/dist-packages (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2)) (6.0.2)
+Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading uvloop-0.21.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.13 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading watchfiles-1.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]==0.30.6->-r /workspace/requirements.txt (line 2))
+  Downloading websockets-15.0.1-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting packaging (from faiss-cpu>=1.9.0.post1->-r /workspace/requirements.txt (line 5))
+  Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai==1.51.0->-r /workspace/requirements.txt (line 6))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Downloading fastapi-0.115.0-py3-none-any.whl (94 kB)
+Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+Downloading numpy-2.1.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.0/16.0 MB 97.4 MB/s eta 0:00:00
+
+Downloading openai-1.51.0-py3-none-any.whl (383 kB)
+Downloading pypdf-4.3.1-py3-none-any.whl (295 kB)
+Downloading python_multipart-0.0.12-py3-none-any.whl (23 kB)
+Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 91.4 MB/s eta 0:00:00
+
+Downloading faiss_cpu-1.12.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (31.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31.4/31.4 MB 94.5 MB/s eta 0:00:00
+
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+Downloading charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Downloading click-8.3.0-py3-none-any.whl (107 kB)
+Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httptools-0.7.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (478 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading jiter-0.11.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (347 kB)
+Downloading python_dotenv-1.1.1-py3-none-any.whl (20 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading starlette-0.38.6-py3-none-any.whl (71 kB)
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+Downloading uvloop-0.21.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 108.5 MB/s eta 0:00:00
+
+Downloading watchfiles-1.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+Downloading websockets-15.0.1-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+Downloading packaging-25.0-py3-none-any.whl (66 kB)
+Installing collected packages: websockets, uvloop, urllib3, typing-extensions, tqdm, sniffio, python-multipart, python-dotenv, pypdf, packaging, numpy, jiter, idna, httptools, h11, distro, click, charset-normalizer, certifi, annotated-types, uvicorn, requests, pydantic-core, httpcore, faiss-cpu, anyio, watchfiles, starlette, pydantic, httpx, openai, fastapi
+  WARNING: The script websockets is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script tqdm is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script dotenv is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts f2py and numpy-config are installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script distro is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script normalizer is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script uvicorn is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script watchfiles is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script httpx is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script openai is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script fastapi is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed annotated-types-0.7.0 anyio-4.11.0 certifi-2025.10.5 charset-normalizer-3.4.4 click-8.3.0 distro-1.9.0 faiss-cpu-1.12.0 fastapi-0.115.0 h11-0.16.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 idna-3.11 jiter-0.11.0 numpy-2.1.2 openai-1.51.0 packaging-25.0 pydantic-2.9.2 pydantic-core-2.23.4 pypdf-4.3.1 python-dotenv-1.1.1 python-multipart-0.0.12 requests-2.32.3 sniffio-1.3.1 starlette-0.38.6 tqdm-4.67.1 typing-extensions-4.15.0 urllib3-2.5.0 uvicorn-0.30.6 uvloop-0.21.0 watchfiles-1.1.1 websockets-15.0.1
