@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KB RAG</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    body { padding: 1rem; }
+    .contexts { white-space: pre-wrap; background: #f6f6f6; padding: 0.75rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Knowledge-base Search & Synthesis</h1>
+
+    <section>
+      <h3>Ingest Documents</h3>
+      <form id="ingest-form">
+        <input type="file" id="files" name="files" multiple />
+        <button type="submit">Upload & Index</button>
+      </form>
+      <pre id="ingest-result"></pre>
+    </section>
+
+    <section>
+      <h3>Ask</h3>
+      <form id="query-form">
+        <input type="text" id="q" name="q" placeholder="Ask a question..." required />
+        <input type="number" id="top_k" name="top_k" value="5" min="1" max="20" />
+        <button type="submit">Search</button>
+      </form>
+      <h4>Answer</h4>
+      <div id="answer"></div>
+      <details>
+        <summary>Show retrieved contexts</summary>
+        <div class="contexts" id="contexts"></div>
+      </details>
+    </section>
+  </main>
+
+  <script>
+    const ingestForm = document.getElementById('ingest-form');
+    ingestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const filesInput = document.getElementById('files');
+      const formData = new FormData();
+      for (const f of filesInput.files) formData.append('files', f);
+      const res = await fetch('/ingest', { method: 'POST', body: formData });
+      const data = await res.json();
+      document.getElementById('ingest-result').textContent = JSON.stringify(data, null, 2);
+    });
+
+    const queryForm = document.getElementById('query-form');
+    queryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(queryForm);
+      const res = await fetch('/query', { method: 'POST', body: formData });
+      const data = await res.json();
+      document.getElementById('answer').textContent = data.answer;
+      document.getElementById('contexts').textContent = JSON.stringify(data.contexts, null, 2);
+    });
+  </script>
+</body>
+</html>
